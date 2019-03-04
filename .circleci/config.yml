@@ -10,4 +10,3 @@ workflows:
     context: WhiteSource
     api_key: $API_KEY
     config_file_path: "https://s3.amazonaws.com/file-system-agent/SNAPSHOT/whitesource-fs-agent.config"
-    directory : C:/Users/PhilipAbed/Downloads/test/projects/cli/cli-6.34.0
