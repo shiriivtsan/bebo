@@ -8,5 +8,5 @@ workflows:
     jobs:
     - scan/whitesource-scan:
     context: WhiteSource
-    api_key: a0282c747cf04ef1b953117bb97f19fa9428af410b294eb4976f2effdaca0904
+    api_key: *
     config_file_path: "https://s3.amazonaws.com/file-system-agent/SNAPSHOT/whitesource-fs-agent.config"
