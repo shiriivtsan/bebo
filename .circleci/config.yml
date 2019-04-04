@@ -1,6 +1,6 @@
 # This code is licensed from CircleCI to the user under the MIT license. See
 # https://circleci.com/orbs/registry/licensing for details.
-version: 2.1
+version:2.1
 description: "The orb integrates Vulnerability Checker, a tool which checks your code against the top 50 open source vulnerabilities and gives a result in HTML file in artifacts."
 
 executors:
