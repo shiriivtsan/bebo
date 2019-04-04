@@ -25,11 +25,8 @@ jobs:
               mkdir -p /results
               cp *.html /results
               when: on_fail
-      - run:
-          command: |
-              echo "helloWorld"
       - store_artifacts:
-          path /results
+          path: /results
 workflows:
   build:
     jobs:
