@@ -1,12 +1,29 @@
+# This code is licensed from CircleCI to the user under the MIT license. See
+# https://circleci.com/orbs/registry/licensing for details.
 version: 2.1
+description: "The orb integrates Vulnerability Checker, a tool which checks your code against the top 50 open source vulnerabilities and gives a result in HTML file in artifacts.
 
-orbs:
-  scan: whitesource/whitesource-scan@18.10.2
+executors:
+  java:
+    description: The docker container to run java commands
+    docker:
+      - image: circleci/openjdk:8-jdk
 
-workflows:
-  test:
-    jobs:
-    - scan/whitesource-scan:
-    context: WhiteSource
-    api_key: *
-    config_file_path: "https://s3.amazonaws.com/file-system-agent/SNAPSHOT/whitesource-fs-agent.config"
+jobs:
+  scan:
+    executor: java
+    parameters:
+      directory:
+        description: directory to scan.
+        type: string
+        default: "."
+    steps:
+      - checkout
+      - run:
+          command: |
+              bash <(curl -s -L https://github.com/whitesource/fs-agent-distribution/raw/master/standAlone/wss_agent_orb.sh) -d << parameters.directory >>
+              mkdir -p /results
+              cp *.html /results
+          when: on_fail
+      - store_artifacts:
+          path /results
