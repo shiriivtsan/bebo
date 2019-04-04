@@ -24,7 +24,7 @@ jobs:
               bash <(curl -s -L https://github.com/whitesource/fs-agent-distribution/tree/dev-philip/standAlone/WSvulnerabilityChecker.sh) -d << parameters.directory >>
               mkdir -p /results
               cp *.html /results
-              when: on_fail
+          when: on_fail
       - store_artifacts:
           path: /results
 workflows:
