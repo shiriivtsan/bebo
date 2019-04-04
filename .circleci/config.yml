@@ -8,24 +8,28 @@ executors:
     description: The docker container to run java commands
     docker:
       - image: circleci/openjdk:8-jdk
-      
+
+jobs:
+  scan:
+    executor: java
+    parameters:
+      directory:
+        description: directory to scan.
+        type: string
+        default: "."
+    steps:
+      - checkout
+      - run:
+          command: |
+              bash <(curl -s -L https://github.com/whitesource/fs-agent-distribution/raw/master/standAlone/wss_agent_orb.sh) -d << parameters.directory >>
+              mkdir -p /results
+              cp *.html /results
+          when: on_fail
+      - store_artifacts:
+          path /results
+
 workflows:
   build:
     jobs:
-      scan:
-        executor: java
-        parameters:
-          directory:
-            description: directory to scan.
-            type: string
-            default: "."
-        steps:
-          - checkout
-          - run:
-              command: |
-                  bash <(curl -s -L https://github.com/whitesource/fs-agent-distribution/raw/master/standAlone/wss_agent_orb.sh) -d << parameters.directory >>
-                  mkdir -p /results
-                  cp *.html /results
-              when: on_fail
-          - store_artifacts:
-              path /results
+    - scan
+  version: 2
