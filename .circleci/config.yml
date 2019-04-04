@@ -11,7 +11,7 @@ executors:
 
 jobs:
   scan:
-    executor: java
+    executor: docker
     parameters:
       directory:
         description: directory to scan.
