@@ -11,7 +11,7 @@ executors:
 
 jobs:
   scan:
-    executor: java
+    executor: shell
     parameters:
       directory:
         description: directory to scan.
@@ -21,8 +21,9 @@ jobs:
       - checkout
       - run:
           command: |
-              mkdir -p ~/bebo
-              cp *.html bebo
+            echo Running tests
+            mkdir -p /tmp/test-results
+            make test
       - store_artifacts:
           path: /bebo
 workflows:
