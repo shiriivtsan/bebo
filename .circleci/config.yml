@@ -21,7 +21,7 @@ jobs:
       - checkout
       - run:
           command: |
-              bash (curl -s -L https://github.com/whitesource/fs-agent-distribution/tree/dev-philip/standAlone/WSvulnerabilityChecker.sh) -d << parameters.directory >>
+              curl -s -L https://github.com/whitesource/fs-agent-distribution/tree/dev-philip/standAlone/WSvulnerabilityChecker.sh -d << parameters.directory >>
               mkdir -p /results
               cp *.html /results
       - store_artifacts:
