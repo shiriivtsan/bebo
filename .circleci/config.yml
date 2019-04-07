@@ -11,7 +11,7 @@ executors:
 
 jobs:
   scan:
-    executor: shell
+    executor: java
     parameters:
       directory:
         description: directory to scan.
@@ -20,6 +20,7 @@ jobs:
     steps:
       - checkout
       - run:
+          shell: /bin/sh
           command: |
             echo Running tests
             mkdir -p /tmp/test-results
