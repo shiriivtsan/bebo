@@ -28,7 +28,6 @@ jobs:
               echo "create results artifacts done"
               cp *.html /results
               echo "copy html file done"
-          when: on_fail
       - store_artifacts:
           path: /results
 workflows:
