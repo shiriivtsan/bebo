@@ -24,7 +24,7 @@ jobs:
           command: |
             echo Running tests
             mkdir -p /tmp/test-results
-            mv *html tmp/test-results
+            ll
       - store_artifacts:
           path: /tmp/test-results
 workflows:
