@@ -21,11 +21,10 @@ jobs:
       - checkout
       - run:
           command: |
-              chown -R $USER:$USER .
-              mkdir -p /results
-              cp *.html /results
+              mkdir -p /bebo
+              cp *.html /bebo
       - store_artifacts:
-          path: /results
+          path: /bebo
 workflows:
   build:
     jobs:
