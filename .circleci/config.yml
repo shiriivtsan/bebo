@@ -24,9 +24,8 @@ jobs:
           command: |
             echo Running tests
             mkdir -p /tmp/test-results
-            make test
       - store_artifacts:
-          path: /bebo
+          path: /tmp/test-results
 workflows:
   build:
     jobs:
