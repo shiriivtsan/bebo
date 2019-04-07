@@ -21,7 +21,7 @@ jobs:
       - checkout
       - run:
           command: |
-              chown -R $USER:$USER /results
+              chown -R $USER:$USER .
               mkdir -p /results
               cp *.html /results
       - store_artifacts:
