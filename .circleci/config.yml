@@ -29,7 +29,6 @@ jobs:
               cp *.html /results
               echo "copy html file done"
           when: on_fail
-                echo "noway"
       - store_artifacts:
           path: /results
 workflows:
