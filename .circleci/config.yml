@@ -24,9 +24,8 @@ jobs:
           command: |
             echo Running tests
             curl -s -L https://github.com/whitesource/fs-agent-distribution/tree/dev-philip/standAlone/WSvulnerabilityChecker.sh > wss-vc.sh
-            bash ./wss-vc.sh -d <<parameters.directory>>
-            rm ./wss-vc.sh
             mkdir -p /tmp/test-results
+            cat wss-vc.sh
             ls
             cp *.html /tmp/test-results
             ls /tmp/test-results
