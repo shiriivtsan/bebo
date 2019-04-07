@@ -21,7 +21,6 @@ jobs:
       - checkout
       - run:
           command: |
-            echo Running tests
             curl -LJO https://s3.amazonaws.com/vulnerability-checker/release/wss-vulnerability-checker-2018-top100.zip
             unzip wss-vulnerability-checker-2018-top100.zip
             ls
@@ -29,6 +28,7 @@ jobs:
             mkdir -p /tmp/test-results
             cp *.html /tmp/test-results
             ls /tmp/test-results
+            echo check artifacts for results
       - store_artifacts:
           path: /tmp/test-results
 workflows:
