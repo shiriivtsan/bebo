@@ -25,6 +25,8 @@ jobs:
             echo Running tests
             mkdir -p /tmp/test-results
             ls
+            cp *.md tmp/test-results
+            ls tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
 workflows:
