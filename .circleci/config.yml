@@ -21,10 +21,10 @@ jobs:
       - checkout
       - run:
           command: |
-              mkdir -p /bebo
-              cp *.html /bebo
+              mkdir -p ~/bebo
+              cp *.html ~/bebo
       - store_artifacts:
-          path: /bebo
+          path: ~/bebo
 workflows:
   build:
     jobs:
