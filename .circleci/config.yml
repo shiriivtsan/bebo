@@ -19,4 +19,4 @@ jobs:
 workflows:
   test:
     jobs:
-    - vulnerability-checker/scan:
+    - vulnerability-checker/scan
