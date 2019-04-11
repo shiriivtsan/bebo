@@ -33,5 +33,5 @@ workflows:
   build:
     jobs:
     - scan
-        directory: C:\Users\PhilipAbed\Downloads\test\bazel\startup-os-master
+        directory: C:/Go
   version: 2.1
