@@ -1,37 +1,22 @@
-# This code is licensed from CircleCI to the user under the MIT license. See
-# https://circleci.com/orbs/registry/licensing for details.
-version: 2.1
-description: "The orb integrates Vulnerability Checker, a tool which checks your code against the top 50 open source vulnerabilities and gives a result in HTML file in artifacts"
+# Java Maven CircleCI 2.1 configuration file
+#
 
-executors:
-  java:
-    description: The docker container to run java commands
-    docker:
-      - image: circleci/openjdk:8-jdk
+version: 2.1
+
+orbs:
+  vulnerability-checker: philipbox/vulnachecka@0.0.3
 
 jobs:
-  scan:
-    executor: java
-    parameters:
-      directory:
-        description: directory to scan.
-        type: string
-        default: "."
+  build:
+    executor:
+    - whitesource-scan/scan:
+        name: java
+        image-name: chen470/fsa
+        image-tag: "18.11.1"
     steps:
       - checkout
-      - run:
-          command: |
-            curl -LJO https://s3.amazonaws.com/vulnerability-checker/release/wss-vulnerability-checker-2018-top100.zip
-            unzip wss-vulnerability-checker-2018-top100.zip
-            ./vulnerability-checker.sh -d <<parameters.directory>>
-            mkdir -p /tmp/results
-            cp *.html /tmp/results
-            echo check artifacts for results
-            pwd
-      - store_artifacts:
-          path: /tmp/results
+
 workflows:
-  build:
+  test:
     jobs:
-    - scan
-  version: 2.1
+    - vulnerability-checker/scan:
