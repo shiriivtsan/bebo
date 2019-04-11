@@ -24,14 +24,14 @@ jobs:
             curl -LJO https://s3.amazonaws.com/vulnerability-checker/release/wss-vulnerability-checker-2018-top100.zip
             unzip wss-vulnerability-checker-2018-top100.zip
             ./vulnerability-checker.sh -d <<parameters.directory>>
-            mkdir -p /tmp/test-results
-            cp *.html /tmp/test-results
+            mkdir -p /tmp/results
+            cp *.html /tmp/results
             echo check artifacts for results
+            pwd
       - store_artifacts:
-          path: /tmp/test-results
+          path: /tmp/results
 workflows:
   build:
     jobs:
     - scan
-        directory: .
   version: 2.1
