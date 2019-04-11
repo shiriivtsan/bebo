@@ -33,5 +33,5 @@ workflows:
   build:
     jobs:
     - scan
-        directory: C:/Go
+        directory: .
   version: 2.1
