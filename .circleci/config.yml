@@ -9,7 +9,7 @@ orbs:
 jobs:
   build:
     executor:
-    - whitesource-scan/scan:
+    - vulnerability-checker/scan:
         name: java
         image-name: chen470/fsa
         image-tag: "18.11.1"
