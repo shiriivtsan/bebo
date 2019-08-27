@@ -1,22 +1,13 @@
+    
 # Java Maven CircleCI 2.1 configuration file
-#
+##
 
 version: 2.1
 
 orbs:
-  vulnerability-checker: philipbox/vulnachecka@0.0.3
-
-jobs:
-  build:
-    executor:
-    - vulnerability-checker/scan:
-        name: java
-        image-name: chen470/fsa
-        image-tag: "18.11.1"
-    steps:
-      - checkout
-
+  vulnerability-checker: whitesource/vulnerability-checker@19.7.2
+  
 workflows:
-  build:
-    jobs:
-    - vulnerability-checker/scan
+ test:
+   jobs:
+      - vulnerability-checker/scan
